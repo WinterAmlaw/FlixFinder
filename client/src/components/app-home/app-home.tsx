@@ -1,5 +1,5 @@
 import { Component, State, h } from '@stencil/core';
-
+   
 @Component({
   tag: 'custom-clock'
 })
@@ -8,14 +8,13 @@ export class CustomClock {
   timer: number;
 
   @State() time: number = Date.now();
-  @State() movies: any[] = []; // Array to store movie data
+  @State() movies: any[] = []; 
 
   connectedCallback() {
     this.timer = window.setInterval(() => {
       this.time = Date.now();
     }, 1000);
 
-    // Fetch movies from the server when the component is connected
     this.fetchMovies();
   }
 
@@ -23,13 +22,12 @@ export class CustomClock {
     window.clearInterval(this.timer);
   }
 
-  // Function to fetch movies from the server
   async fetchMovies() {
     try {
-      const response = await fetch('http://localhost:3000/api/movies'); // Replace with your server's URL
+      const response = await fetch('http://localhost:3000/api/movies'); 
       if (response.ok) {
         const data = await response.json();
-        this.movies = data; // Set the fetched movie data in the state
+        this.movies = data; 
       } else {
         console.error('Failed to fetch movies:', response.statusText);
       }

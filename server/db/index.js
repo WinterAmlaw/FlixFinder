@@ -1,15 +1,13 @@
 require("dotenv").config();
 const mysql = require('mysql2');
 
-// Create a MySQL database connection
 const db = mysql.createConnection({
-  host: 'localhost', // Replace with your MySQL server host
-  user: 'root',      // Replace with your MySQL username
-  password: process.env.MYSQL_PASSWORD,  // Replace with your MySQL password
-  database: 'flixfinder'  // Replace with your MySQL database name
+  host: 'localhost', 
+  user: 'root',      
+  password: process.env.MYSQL_PASSWORD,  
+  database: 'flixfinder'  
 });
 
-// Connect to the database
 db.connect((err) => {
   if (err) {
     console.error('Database connection failed:', err.stack);
@@ -48,5 +46,4 @@ db.connect((err) => {
 //   console.log('Movie inserted successfully:', results);
 // });
 
-// Export the 'db' connection for use in your Express.js routes
 module.exports = db;
